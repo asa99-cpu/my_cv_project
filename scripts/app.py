@@ -2,6 +2,9 @@ import streamlit as st
 import os
 from components import display_cv
 
+# Set page config - Must be the first Streamlit command
+st.set_page_config(page_title="My CV", page_icon="📄", layout="centered")
+
 # Load custom CSS styles
 def local_css(file_name):
     """Loads custom CSS styles."""
@@ -10,9 +13,6 @@ def local_css(file_name):
 
 # Apply custom styles
 local_css("styles/styles.css")
-
-# Set page config
-st.set_page_config(page_title="My CV", page_icon="📄", layout="centered")
 
 # Define file paths
 cv_text_path = os.path.join("data", "cv_text.txt")

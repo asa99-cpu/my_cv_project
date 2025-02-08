@@ -21,18 +21,21 @@ def display_skills():
 
 def display_education():
     st.markdown("""
-    - **Bachelor Degree in Science of Chemistry**
+    - **Bachelor Degree in Science of Chemistry** (University Name)
+    - **Master's Degree in Environmental Science** (University Name)
     """)
 
 def display_languages():
     st.markdown("""
-    - Kurdish
-    - Arabic
-    - English
-    - Persian
+    - Kurdish (Native)
+    - Arabic (Fluent)
+    - English (Fluent)
+    - Persian (Intermediate)
     """)
 
 def display_internships():
     st.markdown("""
     - **Internship Program of the Kurdistan Regional Government (2017)**
+    - **Internship at XYZ Corp. in 2019**
+    - **Volunteering Experience with ABC Non-Profit (2020)**
     """)

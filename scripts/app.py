@@ -13,49 +13,36 @@ st.set_page_config(
 with open("styles/styles.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# Header Section
-st.title("Derin Najmadin Mahamd")
-st.markdown("---")
+# Header
+st.markdown("""
+    <div class="header">
+        <h1>Derin Najmadin Mahamd</h1>
+        <h3>Graphic Designer & Full-Stack Developer</h3>
+    </div>
+""", unsafe_allow_html=True)
 
-# Sidebar for image and contact information
+# Sidebar for image
 with st.sidebar:
     st.image("assets/cv_image.jpg", width=200)
-    st.markdown("### Contact Information", unsafe_allow_html=True)
-    st.markdown("""
-    **Email:** deman.najmadin90@gmail.com  
-    **Phone:** +0750 710 40 32  
-    **Date of Birth:** September 9, 1995  
-    **Gender:** Female  
-    **Nationality:** Kurdish
-    """)
+    st.markdown("### Contact Information")
+    st.markdown("**Email:** deman.najmadin90@gmail.com")
+    st.markdown("**Phone:** +0750 710 40 32")
+    st.markdown("**Date of Birth:** September 9, 1995")
+    st.markdown("**Gender:** Female")
+    st.markdown("**Nationality:** Kurdish")
 
-# Main content with columns
-col1, col2 = st.columns([3, 1])
+# Main content
+st.markdown("<div class='section-header'>Personal Details</div>", unsafe_allow_html=True)
+display_personal_details()
 
-with col1:
-    # Display Personal Details
-    st.header("Personal Details")
-    display_personal_details()
+st.markdown("<div class='section-header'>Skills</div>", unsafe_allow_html=True)
+display_skills()
 
-    st.header("Skills")
-    display_skills()
+st.markdown("<div class='section-header'>Education</div>", unsafe_allow_html=True)
+display_education()
 
-    st.header("Education")
-    display_education()
+st.markdown("<div class='section-header'>Languages</div>", unsafe_allow_html=True)
+display_languages()
 
-    st.header("Languages")
-    display_languages()
-
-    st.header("Internships")
-    display_internships()
-
-with col2:
-    st.markdown("### Profile")
-    st.markdown("""
-    Enthusiastic and skilled individual with experience in multiple fields, including laboratory work, office tools, and video editing.
-    Committed to learning and contributing positively to any professional environment.
-    """)
-
-    st.markdown("### Portfolio")
-    st.markdown("For detailed work and projects, please visit [my portfolio](#).")
-
+st.markdown("<div class='section-header'>Internships</div>", unsafe_allow_html=True)
+display_internships()

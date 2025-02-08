@@ -1,12 +1,9 @@
-# 📄 My CV in Streamlit
+# Professional CV with Streamlit
 
-This is a simple Streamlit web application that displays a CV with both an image and extracted text.
+This project is a professional CV built using Streamlit. It showcases my skills, education, and experience in a clean and modern design.
 
-## 🚀 Features
-- Displays a scanned CV image
-- Shows extracted text from the CV
-- Organizes personal details, skills, education, and more
+## How to Run
 
-## 🛠 Installation
 1. Clone the repository:
-
+   ```bash
+   git clone https://github.com/your-username/cv_project.git

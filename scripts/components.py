@@ -2,37 +2,47 @@ import streamlit as st
 
 def display_personal_details():
     st.markdown("""
-    - **Name:** Derin Najmadin Mahamd
-    - **Email:** deman.najmadin90@gmail.com
-    - **Phone:** +0750 710 40 32
-    - **Date of Birth:** September 9, 1995
-    - **Gender:** Female
-    - **Nationality:** Kurdish
-    """)
+    <ul class="details">
+        <li><strong>Name:</strong> Derin Najmadin Mahamd</li>
+        <li><strong>Email:</strong> deman.najmadin90@gmail.com</li>
+        <li><strong>Phone:</strong> +0750 710 40 32</li>
+        <li><strong>Date of Birth:</strong> September 9, 1995</li>
+        <li><strong>Gender:</strong> Female</li>
+        <li><strong>Nationality:</strong> Kurdish</li>
+    </ul>
+    """, unsafe_allow_html=True)
 
 def display_skills():
     st.markdown("""
-    - **Laboratory Technician**
-    - **Microsoft Office**
-    - **Translator**
-    - **Video Editing**
-    - **Sewing**
-    """)
+    <ul class="skills">
+        <li><strong>Laboratory Technician</strong></li>
+        <li><strong>Microsoft Office</strong></li>
+        <li><strong>Translator</strong></li>
+        <li><strong>Video Editing</strong></li>
+        <li><strong>Sewing</strong></li>
+    </ul>
+    """, unsafe_allow_html=True)
 
 def display_education():
     st.markdown("""
-    - **Bachelor Degree in Science of Chemistry**
-    """)
+    <ul class="education">
+        <li><strong>Bachelor Degree in Science of Chemistry</strong></li>
+    </ul>
+    """, unsafe_allow_html=True)
 
 def display_languages():
     st.markdown("""
-    - **Kurdish** (Native)
-    - **Arabic** (Fluent)
-    - **English** (Fluent)
-    - **Persian** (Intermediate)
-    """)
+    <ul class="languages">
+        <li><strong>Kurdish</strong></li>
+        <li><strong>Arabic</strong></li>
+        <li><strong>English</strong></li>
+        <li><strong>Persian</strong></li>
+    </ul>
+    """, unsafe_allow_html=True)
 
 def display_internships():
     st.markdown("""
-    - **Internship Program of the Kurdistan Regional Government (2017)**
-    """)
+    <ul class="internships">
+        <li><strong>Internship Program of the Kurdistan Regional Government (2017)</strong></li>
+    </ul>
+    """, unsafe_allow_html=True)

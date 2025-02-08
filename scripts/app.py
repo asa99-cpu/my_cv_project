@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from scripts.components import display_personal_details, display_skills, display_education, display_languages, display_internships
 
 # Page configuration
@@ -41,3 +42,11 @@ display_languages()
 
 st.header("Internships")
 display_internships()
+
+# Download CV button
+st.markdown("---")
+st.subheader("Download Your CV")
+st.markdown("Click the button below to download your CV as a PDF.")
+if st.button("Download CV"):
+    # Logic for creating a downloadable CV PDF (optional)
+    st.write("Downloading...")  # You can create a dynamic PDF file in this section

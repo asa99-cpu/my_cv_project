@@ -1,5 +1,6 @@
 import streamlit as st
-from scripts.components import display_personal_details, display_skills, display_education, display_languages, display_internships
+import os
+from components import display_personal_details, display_skills, display_education, display_languages, display_internships
 
 # Page configuration
 st.set_page_config(
@@ -12,11 +13,11 @@ st.set_page_config(
 with open("styles/styles.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# Header Section
+# Header
 st.title("Derin Najmadin Mahamd")
 st.markdown("---")
 
-# Sidebar for image and contact information
+# Sidebar for image
 with st.sidebar:
     st.image("assets/cv_image.jpg", width=200)
     st.markdown("### Contact Information")
@@ -26,30 +27,18 @@ with st.sidebar:
     st.markdown("**Gender:** Female")
     st.markdown("**Nationality:** Kurdish")
 
-# Main Content Section with Two Columns
-col1, col2 = st.columns([1, 2])
+# Main content
+st.header("Personal Details")
+display_personal_details()
 
-with col1:
-    # Personal Details
-    st.header("Personal Details")
-    display_personal_details()
+st.header("Skills")
+display_skills()
 
-with col2:
-    # Skills
-    st.header("Skills")
-    display_skills()
+st.header("Education")
+display_education()
 
-with col1:
-    # Education
-    st.header("Education")
-    display_education()
+st.header("Languages")
+display_languages()
 
-with col2:
-    # Languages
-    st.header("Languages")
-    display_languages()
-
-with col1:
-    # Internships
-    st.header("Internships")
-    display_internships()
+st.header("Internships")
+display_internships()

@@ -31,32 +31,57 @@ h1, h2, h3 {
     background-color: #1B4F72;
 }
 
-.stMarkdown {
-    font-family: 'Arial', sans-serif;
+/* Two-Column Layout */
+.stColumns {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-/* Custom page title */
-.stTitle {
-    color: #1B4F72;
-}
-
-/* Customize CV sections */
-.stSection {
-    background-color: #f0f4f7;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-}
-
-.stSidebar {
-    background-color: #F4F6F6;
+.stColumns .stColumn {
+    flex: 1;
     padding: 20px;
-    border-radius: 10px;
+    margin: 10px;
 }
 
-/* Button styling for download */
-.stButton button {
-    background-color: #2E86C1;
-    color: white;
-    font-size: 16px;
+.stColumns .stColumn:first-child {
+    max-width: 50%;
+}
+
+/* Header */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2E86C1;
+    text-align: center;
+}
+
+/* Subheaders */
+h2, h3 {
+    font-size: 1.5rem;
+    color: #2E86C1;
+    margin-top: 1.5rem;
+}
+
+/* Bullet points */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .stColumns {
+        flex-direction: column;
+    }
+    .stColumn {
+        max-width: 100%;
+    }
+    .stColumn:first-child {
+        margin-top: 20px;
+    }
 }

@@ -37,20 +37,51 @@ def display_cv(cv_text_path, cv_image_path):
         st.download_button("📄 Download CV as PDF", data=pdf_data, file_name="CV_Derin.pdf", mime="application/pdf")
 
 def generate_pdf(cv_dict):
-    """Generate a PDF file from CV details."""
+    """Generate a modern, stylish PDF file from CV details."""
     pdf = FPDF()
-    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.set_auto_page_break(auto=True, margin=10)
     pdf.add_page()
+
+    # Set fonts for headings and body
     pdf.set_font("Arial", style="B", size=16)
     pdf.cell(200, 10, "CV - Derin Najmadin Mahamd", ln=True, align="C")
     
+    # Draw a line under the header
+    pdf.line(10, 20, 200, 20)
+
+    # Add space after title
+    pdf.ln(10)
+    
     pdf.set_font("Arial", size=12)
+    
+    # Personal Information (Name, Email, Phone, etc.)
+    pdf.set_font("Arial", style="B", size=14)
+    pdf.cell(0, 10, "Personal Information", ln=True)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(0, 10, f"Name: Derin Najmadin Mahamd", ln=True)
+    pdf.cell(0, 10, f"Email: deman.najmadin90@gmail.com", ln=True)
+    pdf.cell(0, 10, f"Phone: 0750 710 40 32", ln=True)
+    pdf.cell(0, 10, f"Date of Birth: September 9, 1995", ln=True)
+    pdf.cell(0, 10, f"Gender: Female", ln=True)
+    pdf.cell(0, 10, f"Nationality: Kurd", ln=True)
+
+    # Draw a line after personal info
+    pdf.ln(5)
+    pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+
+    # Add space after personal info
+    pdf.ln(10)
+
+    # Loop through the CV sections
     for section, content in cv_dict.items():
-        pdf.ln(10)
         pdf.set_font("Arial", style="B", size=14)
-        pdf.cell(200, 10, section, ln=True)
-        
+        pdf.cell(0, 10, section, ln=True)
         pdf.set_font("Arial", size=12)
         pdf.multi_cell(0, 8, content)
+
+        # Draw a line after each section
+        pdf.ln(5)
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(10)
 
     return pdf.output(dest="S").encode("latin1")  # Return as bytes

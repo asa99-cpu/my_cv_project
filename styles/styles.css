@@ -1,21 +1,31 @@
-body {
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-}
-
+/* Custom styles for the CV */
 h1, h2, h3 {
-    color: #2E86C1;  /* Header Color */
-    font-weight: bold;
+    color: #2E86C1;
 }
 
-.stButton>button {
+.markdown-text-container {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.sidebar .sidebar-content {
+    background-color: #F4F6F6;
+    padding: 20px;
+}
+
+.sidebar img {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.stButton button {
     background-color: #2E86C1;
     color: white;
     border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
 }
 
-.stDownloadButton>button {
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
+.stButton button:hover {
+    background-color: #1B4F72;
 }

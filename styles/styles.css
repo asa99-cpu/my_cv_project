@@ -1,78 +1,198 @@
-/* Body and general layout */
+/* Common CSS Setup */
 body {
     font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: #f4f7fa;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
-/* Header */
-.header {
-    text-align: center;
+/* Template 1: Simple Design */
+.template-1 {
+    background-color: #f4f7fa;
+    color: #333;
+}
+
+.template-1 .header {
     background-color: #2E86C1;
     color: white;
-    padding: 30px 0;
+    text-align: center;
+    padding: 30px;
     border-radius: 10px;
-    margin-bottom: 20px;
 }
 
-.header h1 {
+.template-1 .header h1 {
     font-size: 36px;
-    font-weight: 600;
 }
 
-.header h3 {
+.template-1 .header h3 {
     font-size: 18px;
-    font-weight: 400;
 }
 
-/* Sidebar styles */
-.sidebar {
+.template-1 .sidebar {
     background-color: #2E86C1;
     color: white;
     padding: 20px;
     border-radius: 10px;
 }
 
-.sidebar img {
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* Section Header */
-.section-header {
+.template-1 .section-header {
     background-color: #2E86C1;
     color: white;
-    font-size: 24px;
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    font-size: 24px;
+    margin-top: 20px;
 }
 
-/* Lists for personal details, skills, etc. */
-ul.details, ul.skills, ul.education, ul.languages, ul.internships {
-    padding-left: 20px;
-    list-style-type: none;
+/* Template 2: Professional & Sleek */
+.template-2 {
+    background-color: #ffffff;
+    color: #333;
 }
 
-ul.details li, ul.skills li, ul.education li, ul.languages li, ul.internships li {
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-ul.skills li, ul.internships li {
-    font-weight: bold;
-}
-
-/* Custom button */
-.stButton button {
-    background-color: #2E86C1;
+.template-2 .header {
+    background-color: #2A3D66;
     color: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
 }
 
-.stButton button:hover {
-    background-color: #1B4F72;
+.template-2 .header h1 {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.template-2 .header h3 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.template-2 .sidebar {
+    background-color: #2A3D66;
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.template-2 .section-header {
+    background-color: #2A3D66;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 26px;
+    margin-top: 30px;
+}
+
+/* Template 3: Modern & Colorful */
+.template-3 {
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+.template-3 .header {
+    background-color: #FF6347;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.template-3 .header h1 {
+    font-size: 40px;
+}
+
+.template-3 .header h3 {
+    font-size: 18px;
+}
+
+.template-3 .sidebar {
+    background-color: #FF6347;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.template-3 .section-header {
+    background-color: #FF6347;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+/* Template 4: Clean & Minimalistic */
+.template-4 {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.template-4 .header {
+    background-color: #1E90FF;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.template-4 .header h1 {
+    font-size: 38px;
+}
+
+.template-4 .header h3 {
+    font-size: 20px;
+}
+
+.template-4 .sidebar {
+    background-color: #1E90FF;
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.template-4 .section-header {
+    background-color: #1E90FF;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+/* Template 5: Dark Mode */
+.template-5 {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.template-5 .header {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.template-5 .header h1 {
+    font-size: 40px;
+}
+
+.template-5 .header h3 {
+    font-size: 18px;
+}
+
+.template-5 .sidebar {
+    background-color: #444444;
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.template-5 .section-header {
+    background-color: #444444;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 24px;
+    margin-top: 20px;
 }

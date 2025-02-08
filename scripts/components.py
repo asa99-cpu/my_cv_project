@@ -8,18 +8,17 @@ def display_cv(cv_text_path, cv_image_path):
         cv_text = file.read()
 
     # Parse the text into sections based on double newlines.
-    # We expect sections like: "Personal details", "Skills", etc.
     sections = cv_text.split("\n\n")
     cv_dict = {}
     for section in sections:
         lines = section.strip().split("\n")
         if lines:
-            # Remove parentheses from the section title if present
+            # Remove extra characters from the section title if present
             title = lines[0].strip().replace("(", "").replace(")", "")
             content = "\n".join(lines[1:]).strip()
             cv_dict[title] = content
 
-    # --- Display in the Streamlit App ---
+    # --- Display in the Streamlit App (for preview) ---
     st.image(cv_image_path, width=250, caption="CV Profile Picture")
     st.markdown("## 📄 My CV - Derin Najmadin Mahamd")
     for section, content in cv_dict.items():
@@ -37,64 +36,77 @@ def display_cv(cv_text_path, cv_image_path):
 
 def generate_pdf(cv_dict, cv_image_path):
     """
-    Generate a one-page, two-column PDF.
-      - Left column: Profile image and personal details.
-      - Right column: Title and the sections (Skills, Education, Languages, Internships).
+    Generate a modern, one-page, two-column PDF with advanced styling.
+    The left panel is colored and contains your profile image and personal details.
+    The right panel holds the main sections: Skills, Education, Languages, and Internships.
     """
     pdf = FPDF("P", "mm", "A4")
     pdf.add_page()
+    pdf.set_auto_page_break(auto=False)
 
-    # Define page dimensions and margins
-    page_width = 210
-    page_height = 297
-    margin = 10
-    usable_width = page_width - 2 * margin  # 190 mm
-    usable_height = page_height - 2 * margin  # 277 mm
+    # --- Define Colors ---
+    left_bg_color = (40, 116, 166)  # A modern blue
+    white = (255, 255, 255)
+    dark_text = (50, 50, 50)
 
-    # Define column widths and gap
-    left_width = 60  # mm for left column
-    gap = 10         # gap between columns
-    right_width = usable_width - left_width - gap
+    # --- Left Panel Setup ---
+    left_panel_width = 70  # in mm
+    page_height = 297      # A4 height in mm
 
-    # Starting coordinates for left and right columns
-    left_x = margin
-    right_x = left_x + left_width + gap
-    y_start = margin
+    # Draw the left panel background
+    pdf.set_fill_color(*left_bg_color)
+    pdf.rect(0, 0, left_panel_width, page_height, 'F')
 
-    # --- LEFT COLUMN: Profile Image and Personal Details ---
-    pdf.set_xy(left_x, y_start)
+    # Personal details (displayed in white text)
+    pdf.set_text_color(*white)
+    pdf.set_font("Helvetica", "B", 16)
+    pdf.set_xy(10, 20)
+    pdf.cell(50, 10, "Derin Najmadin", ln=1)
+    pdf.cell(50, 10, "Mahamd", ln=1)
+
+    pdf.set_font("Helvetica", "", 12)
+    pdf.set_xy(10, 40)
+    personal_info = (
+        "Email: deman.najmadin90@gmail.com\n"
+        "Phone: 0750 710 40 32\n"
+        "DOB: September 9, 1995\n"
+        "Gender: Female\n"
+        "Nationality: Kurd"
+    )
+    pdf.multi_cell(50, 5, personal_info, align="L")
+
+    # Insert profile image if available
     if os.path.exists(cv_image_path):
-        # Place the profile image. Assume a square image that fits the left column.
-        image_size = left_width  # width and height in mm
-        pdf.image(cv_image_path, x=left_x, y=y_start, w=left_width, h=image_size)
-        y_after_image = y_start + image_size + 5  # 5 mm spacing after the image
-    else:
-        y_after_image = y_start
+        # Place image below the personal details (adjust coordinates as needed)
+        pdf.image(cv_image_path, x=10, y=80, w=50, h=50)
 
-    # Print Personal Details (if available)
-    pdf.set_xy(left_x, y_after_image)
-    pdf.set_font("Arial", size=10)
-    personal_details = cv_dict.get("Personal details", "Personal details not provided.")
-    pdf.multi_cell(left_width, 5, personal_details, align="L")
+    # --- Right Panel Setup ---
+    right_x = left_panel_width + 10  # start right panel with some margin
+    pdf.set_text_color(*dark_text)
+    y_position = 10
 
-    # --- RIGHT COLUMN: Main Content ---
-    pdf.set_xy(right_x, y_start)
-    pdf.set_font("Arial", "B", 16)
-    pdf.cell(right_width, 10, "CV - Derin Najmadin Mahamd", ln=True, align="C")
-    # Draw a horizontal line below the title
-    y_line = pdf.get_y()
-    pdf.line(right_x, y_line, right_x + right_width, y_line)
-    pdf.ln(5)
+    # Header Title on the right panel
+    pdf.set_xy(right_x, y_position)
+    pdf.set_font("Helvetica", "B", 18)
+    pdf.cell(130, 10, "CV - Derin Najmadin Mahamd", ln=1)
+    
+    # Draw a line below the header
+    y_line = pdf.get_y() + 2
+    pdf.set_line_width(0.5)
+    pdf.line(right_x, y_line, right_x + 130, y_line)
+    pdf.ln(8)
 
-    # Sections to be printed on the right column (order is important)
+    # Sections to display on the right panel
     sections = ["Skills", "Education", "Languages", "Internships"]
     for section in sections:
         if section in cv_dict:
-            pdf.set_font("Arial", "B", 12)
-            pdf.cell(right_width, 7, section, ln=True)
-            pdf.set_font("Arial", "", 10)
-            pdf.multi_cell(right_width, 5, cv_dict[section])
-            pdf.ln(3)  # small space between sections
+            pdf.set_xy(right_x, pdf.get_y())
+            pdf.set_font("Helvetica", "B", 14)
+            pdf.cell(130, 8, section, ln=1)
+            pdf.set_font("Helvetica", "", 12)
+            pdf.set_xy(right_x, pdf.get_y())
+            pdf.multi_cell(130, 6, cv_dict[section])
+            pdf.ln(4)
 
-    # Return PDF as bytes (encoded for download)
+    # Return the PDF as bytes for download
     return pdf.output(dest="S").encode("latin1")

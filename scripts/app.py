@@ -2,10 +2,10 @@ import streamlit as st
 import os
 from components import display_cv
 
-# Set page config as the first command
+# Set page config as the very first Streamlit command
 st.set_page_config(page_title="My CV", page_icon="📄", layout="centered")
 
-# Load custom CSS if desired (remember to call local_css before rendering content)
+# Load custom CSS if desired (this must be after set_page_config)
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)

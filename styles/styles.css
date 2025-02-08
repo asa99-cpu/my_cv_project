@@ -1,6 +1,7 @@
 /* Custom styles for the CV */
 h1, h2, h3 {
     color: #2E86C1;
+    font-family: 'Arial', sans-serif;
 }
 
 .markdown-text-container {
@@ -28,4 +29,34 @@ h1, h2, h3 {
 
 .stButton button:hover {
     background-color: #1B4F72;
+}
+
+.stMarkdown {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Custom page title */
+.stTitle {
+    color: #1B4F72;
+}
+
+/* Customize CV sections */
+.stSection {
+    background-color: #f0f4f7;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.stSidebar {
+    background-color: #F4F6F6;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Button styling for download */
+.stButton button {
+    background-color: #2E86C1;
+    color: white;
+    font-size: 16px;
 }

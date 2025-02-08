@@ -3,7 +3,11 @@ from components import display_personal_details, display_skills, display_educati
 from io import BytesIO
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from docx import Document
+from docx.shared import Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 # Page configuration
 st.set_page_config(
@@ -54,75 +58,93 @@ display_internships()
 def generate_pdf():
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
-    c.setFont("Helvetica", 12)
+
+    # Title and personal details
+    c.setFont("Helvetica-Bold", 18)
     c.drawString(100, 750, "Derin Najmadin Mahamd")
-    c.setFont("Helvetica", 10)
+    c.setFont("Helvetica", 12)
     c.drawString(100, 730, "Email: deman.najmadin90@gmail.com")
     c.drawString(100, 710, "Phone: +0750 710 40 32")
     c.drawString(100, 690, "Date of Birth: September 9, 1995")
     c.drawString(100, 670, "Gender: Female")
     c.drawString(100, 650, "Nationality: Kurdish")
-    
-    # Skills Section
+
+    # Add skills
+    c.setFont("Helvetica-Bold", 14)
     c.drawString(100, 630, "Skills:")
+    c.setFont("Helvetica", 12)
     skills = ["Laboratory Technician", "Microsoft Office", "Translator", "Video Editing", "Sewing"]
     y_pos = 610
     for skill in skills:
         c.drawString(120, y_pos, f"- {skill}")
         y_pos -= 20
 
-    # Education Section
+    # Add Education
+    c.setFont("Helvetica-Bold", 14)
     c.drawString(100, y_pos, "Education:")
     y_pos -= 20
+    c.setFont("Helvetica", 12)
     c.drawString(120, y_pos, "Bachelor Degree in Science of Chemistry")
 
-    # Languages Section
+    # Add Languages
     y_pos -= 20
+    c.setFont("Helvetica-Bold", 14)
     c.drawString(100, y_pos, "Languages:")
     y_pos -= 20
     languages = ["Kurdish", "Arabic", "English", "Persian"]
     for language in languages:
+        c.setFont("Helvetica", 12)
         c.drawString(120, y_pos, f"- {language}")
         y_pos -= 20
 
-    # Internships Section
+    # Add Internships
     y_pos -= 20
+    c.setFont("Helvetica-Bold", 14)
     c.drawString(100, y_pos, "Internships:")
     y_pos -= 20
+    c.setFont("Helvetica", 12)
     c.drawString(120, y_pos, "Internship Program of the Kurdistan Regional Government (2017)")
 
+    # Save and return PDF
     c.save()
-
     buffer.seek(0)
     return buffer
 
 # Function to generate Word
 def generate_word():
     doc = Document()
-    doc.add_heading('Derin Najmadin Mahamd', 0)
-    
+
+    # Title and personal details
+    title = doc.add_paragraph()
+    title.add_run('Derin Najmadin Mahamd').bold = True
+    title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     doc.add_paragraph('Email: deman.najmadin90@gmail.com')
     doc.add_paragraph('Phone: +0750 710 40 32')
     doc.add_paragraph('Date of Birth: September 9, 1995')
     doc.add_paragraph('Gender: Female')
     doc.add_paragraph('Nationality: Kurdish')
-    
-    doc.add_heading('Skills', level=1)
+
+    # Add Skills
+    doc.add_paragraph('Skills:', style='Heading 1')
     skills = ["Laboratory Technician", "Microsoft Office", "Translator", "Video Editing", "Sewing"]
     for skill in skills:
         doc.add_paragraph(f"- {skill}")
-    
-    doc.add_heading('Education', level=1)
+
+    # Add Education
+    doc.add_paragraph('Education:', style='Heading 1')
     doc.add_paragraph('Bachelor Degree in Science of Chemistry')
 
-    doc.add_heading('Languages', level=1)
+    # Add Languages
+    doc.add_paragraph('Languages:', style='Heading 1')
     languages = ["Kurdish", "Arabic", "English", "Persian"]
     for language in languages:
         doc.add_paragraph(f"- {language}")
-    
-    doc.add_heading('Internships', level=1)
-    doc.add_paragraph("Internship Program of the Kurdistan Regional Government (2017)")
 
+    # Add Internships
+    doc.add_paragraph('Internships:', style='Heading 1')
+    doc.add_paragraph('Internship Program of the Kurdistan Regional Government (2017)')
+
+    # Save and return Word document
     buffer = BytesIO()
     doc.save(buffer)
     buffer.seek(0)

@@ -1,19 +1,43 @@
 import streamlit as st
-import os
-from components import display_cv
+from scripts.components import display_personal_details, display_skills, display_education, display_languages, display_internships
 
-# Set page config as the very first Streamlit command
-st.set_page_config(page_title="My CV", page_icon="📄", layout="centered")
+# Page configuration
+st.set_page_config(
+    page_title="Derin Najmadin Mahamd - CV",
+    page_icon="📄",
+    layout="wide"
+)
 
-# Load custom CSS if desired (this must be after set_page_config)
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-local_css("styles/styles.css")
+# Custom CSS
+with open("styles/styles.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# Define file paths
-cv_text_path = os.path.join("data", "cv_text.txt")
-cv_image_path = os.path.join("assets", "cv_image.jpg")
+# Header
+st.title("Derin Najmadin Mahamd")
+st.markdown("---")
 
-# Display the CV
-display_cv(cv_text_path, cv_image_path)
+# Sidebar for image
+with st.sidebar:
+    st.image("assets/cv_image.jpg", width=200)
+    st.markdown("### Contact Information")
+    st.markdown("**Email:** deman.najmadin90@gmail.com")
+    st.markdown("**Phone:** +0750 710 40 32")
+    st.markdown("**Date of Birth:** September 9, 1995")
+    st.markdown("**Gender:** Female")
+    st.markdown("**Nationality:** Kurdish")
+
+# Main content
+st.header("Personal Details")
+display_personal_details()
+
+st.header("Skills")
+display_skills()
+
+st.header("Education")
+display_education()
+
+st.header("Languages")
+display_languages()
+
+st.header("Internships")
+display_internships()

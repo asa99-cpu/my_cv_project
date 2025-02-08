@@ -12,11 +12,11 @@ def display_personal_details():
 
 def display_skills():
     st.markdown("""
-    - Laboratory Technician
-    - Microsoft Office
-    - Translator
-    - Video Editing
-    - Sewing
+    - **Laboratory Technician**
+    - **Microsoft Office**
+    - **Translator**
+    - **Video Editing**
+    - **Sewing**
     """)
 
 def display_education():
@@ -26,10 +26,10 @@ def display_education():
 
 def display_languages():
     st.markdown("""
-    - Kurdish
-    - Arabic
-    - English
-    - Persian
+    - **Kurdish** (Native)
+    - **Arabic** (Fluent)
+    - **English** (Fluent)
+    - **Persian** (Intermediate)
     """)
 
 def display_internships():

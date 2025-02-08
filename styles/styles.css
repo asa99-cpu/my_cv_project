@@ -1,31 +1,87 @@
-/* Custom styles for the CV */
-h1, h2, h3 {
-    color: #2E86C1;
-}
-
-.markdown-text-container {
+/* Global settings */
+body {
     font-family: 'Arial', sans-serif;
+    background-color: #F7F7F7;
+    color: #333;
     line-height: 1.6;
 }
 
+/* Header */
+h1 {
+    font-size: 2.5rem;
+    color: #2E86C1;
+    text-align: center;
+    font-weight: bold;
+}
+
+h2, h3 {
+    color: #2E86C1;
+}
+
+/* Sidebar */
 .sidebar .sidebar-content {
-    background-color: #F4F6F6;
+    background-color: #4C6A92;
     padding: 20px;
+    color: #fff;
+    border-radius: 10px;
 }
 
 .sidebar img {
-    border-radius: 10px;
+    border-radius: 50%;
+    border: 4px solid #fff;
     margin-bottom: 20px;
 }
 
+/* Content Layout */
+.stColumns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stColumns > div {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.stColumns .stColumn1 {
+    flex: 70%;
+}
+
+.stColumns .stColumn2 {
+    flex: 30%;
+    background-color: #f0f4f7;
+}
+
+/* Buttons */
 .stButton button {
     background-color: #2E86C1;
     color: white;
     border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .stButton button:hover {
     background-color: #1B4F72;
+    cursor: pointer;
+}
+
+/* Profile Section */
+.stMarkdown {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.stMarkdown a {
+    color: #2E86C1;
+    text-decoration: none;
+}
+
+.stMarkdown a:hover {
+    text-decoration: underline;
 }

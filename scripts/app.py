@@ -11,9 +11,29 @@ st.set_page_config(
 # Template selection
 cv_style = st.selectbox("Choose CV Template", ["Template 1", "Template 2", "Template 3", "Template 4", "Template 5"])
 
-# Custom CSS based on selected template
-with open(f"styles/{cv_style}.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+# Apply selected style
+if cv_style == "Template 1":
+    template_class = "template-1"
+elif cv_style == "Template 2":
+    template_class = "template-2"
+elif cv_style == "Template 3":
+    template_class = "template-3"
+elif cv_style == "Template 4":
+    template_class = "template-4"
+else:
+    template_class = "template-5"
+
+# Custom CSS for all templates in one file
+st.markdown(f"""
+    <style>
+        .{template_class} {{
+            font-family: 'Arial', sans-serif;
+        }}
+    </style>
+""", unsafe_allow_html=True)
+
+# Apply the template style class dynamically
+st.markdown(f"<div class='{template_class}'>", unsafe_allow_html=True)
 
 # Header
 st.markdown("""
@@ -48,3 +68,5 @@ display_languages()
 
 st.markdown("<div class='section-header'>Internships</div>", unsafe_allow_html=True)
 display_internships()
+
+st.markdown("</div>", unsafe_allow_html=True)  # Close the selected template class

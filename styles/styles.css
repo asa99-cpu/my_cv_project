@@ -1,11 +1,6 @@
-/* Custom Streamlit CSS */
-h1 {
-    color: #2C3E50;
-    text-align: center;
-}
+def local_css(file_name):
+    """Loads custom CSS styles."""
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-.stTextArea textarea {
-    background-color: #f8f9fa;
-    font-family: 'Arial', sans-serif;
-}
-
+local_css("styles/styles.css")  # Add this in `app.py`
